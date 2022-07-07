@@ -1,0 +1,983 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Ch01 발표</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="bfac6cc1-907f-42db-be92-f772a26b3860" class="page sans"><header><h1 class="page-title">Ch01 발표</h1></header><div class="page-body"><h1 id="b011383a-1f0a-4798-9c45-ac138cc30bb0" class="">요약</h1><h3 id="b2a27afa-c14e-47bd-b753-0de27bd37e7d" class="">목표</h3><p id="583259c4-d587-4a02-b112-1ca02ee6b1e5" class="">Dentis DB에 대한 CRUD 기능을 HTTP의 JSON 방식으로 제공하는 RESTful API 서버 구현</p><h3 id="61a88d09-669d-47f6-b49c-25d0af50838b" class="">진행사항</h3><ul id="bc8773e6-cd4d-485a-ab29-b62e9a674afb" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">모델 Organization에 대한 기초적인 CRUD 구현</span></li></ul><ul id="7960287a-7932-422b-8e54-4f08dbe7aaac" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">모델 Patient에 대한 기초적인 CRUD 구현</span></li></ul><ul id="eee79bab-f2ce-4f8d-85f9-340de057ed29" class="to-do-list"><li><div class="checkbox checkbox-on"></div> <span class="to-do-children-checked">모델 Treatment에 대한 기초적인 CRUD 구현</span></li></ul><ul id="64a89123-05e1-4a72-90d6-9730a6341bb2" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">모델 Stl3d에 대한 기초적인 CRUD 구현</span></li></ul><ul id="2d9aca57-e8cd-4d67-979e-50d6f7baa94e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">…</span></li></ul><h1 id="13ef58df-da61-4a60-b11c-485677a62c27" class="">용어 설명</h1><h3 id="ece25c61-75ec-497b-bdcb-1a41c0db8024" class="">CRUD: Create, Read, Update, and Delete</h3><p id="30d0f954-a8fd-404e-a4d7-43c661721be1" class="">소프트웨어의 기본적인 데이터 처리 기능이다.</p><ol type="1" id="b575f1ce-a592-4184-9904-84f930ee487a" class="numbered-list" start="1"><li>Create: 새로운 항목을 생성하는 기능이다.</li></ol><ol type="1" id="f174142c-7581-444d-ae6a-5df2f3a4760e" class="numbered-list" start="2"><li>Read: 기존 항목을 읽는 기능이다.</li></ol><ol type="1" id="a9b09fdb-e60c-42d3-b234-a310d311d486" class="numbered-list" start="3"><li>Update: 기존 항목을 갱신하는 기능이다.</li></ol><ol type="1" id="20e5d4f5-c230-4879-9f97-7047b9421b72" class="numbered-list" start="4"><li>Delete: 기존 항목을 삭제하는 기능이다.</li></ol><h3 id="2dbddb1c-137a-4727-b431-f13e8c71b368" class="">RESTful API</h3><p id="fd107b38-f871-41d0-995b-6b30d26f4393" class="">소프트웨어 아키텍처 REST를 바탕으로 한 웹 API이다.</p><h3 id="acc647ef-8958-4a13-9cb9-23e057c84ac1" class="">REST: Representational State Transfer</h3><p id="3301e17b-2ca6-4a1f-80c6-9fba89b0445e" class="">개체 리소스를 주고 받는 것에 집중한다.</p><p id="4f6b2b19-3652-4469-906d-d16cf166fb8f" class="">일반적으로 HTTP 프로토콜과 JSON 형식을 이용한다.</p><p id="6b930522-3394-4e7f-aeea-a6e04ef871a5" class=""><strong>설계 원칙</strong></p><ol type="1" id="402f2b67-ba53-474e-a4fc-5d54e9884608" class="numbered-list" start="1"><li>Uniform Interface: 균일한 표준 형식으로 정보를 전송한다.</li></ol><ol type="1" id="6a394a12-413e-4b23-9d1d-769643c3e85a" class="numbered-list" start="2"><li>Statelessness: 이전의 모든 요청과 독립적으로 처리한다.</li></ol><ol type="1" id="b44715ba-31a8-4a86-b39b-9d74d233b7df" class="numbered-list" start="3"><li>Layered System: 클라이언트와 서버 사이의 다른 중간 서버가 처리할 수 있다.</li></ol><ol type="1" id="b5542c2b-63ef-4c02-b35b-166a36643867" class="numbered-list" start="4"><li>Cacheability: 중간 서버가 일부 응답을 저장하여 반환하는 캐시 기능을 지원한다.</li></ol><p id="e9cce516-0de6-48eb-ba0f-59968d5b0e31" class=""><strong>이점</strong></p><ol type="1" id="8f746d09-d9b4-401f-9b30-94976d5d0b65" class="numbered-list" start="1"><li>통신 병목 현상을 일으키지 않으면서 수많은 요청을 처리할 수 있다.</li></ol><ol type="1" id="e3e5329f-19f0-4f2f-9bcf-c13ac357774d" class="numbered-list" start="2"><li>서버 애플리케이션의 변화가 클라이언트에 영향이 미치지 않는다.</li></ol><ol type="1" id="ca71997b-6140-41ab-88bb-de0a4302f8e9" class="numbered-list" start="3"><li>API 설계와 상관없이 다양한 프로그래밍 언어로 클라이언트 또는 서버 프로그래밍 할 수 있다.</li></ol><h3 id="d44bc88b-f94a-4068-9a89-69d82db62ab3" class="">HTTP: Hypertext Transfer Protocol</h3><p id="fedd92fc-35c1-491a-a29f-482cdf42fae8" class="">서버와 클라이언트가 통신하기 위한 프로토콜 중 하나이다.</p><p id="15eda031-284f-4d1b-b4b2-ae40f6cf1a4f" class="">클라이언트는 서버에게 HTTP Request를, 서버는 클라이언트에게 HTTP Response를 보낸다.</p><p id="12b329be-2abe-464f-8e77-6bc64d85752c" class=""><strong>Stateless</strong>: 이전 HTTP Request의 상태를 저장하지 않는다.</p><p id="7b056b29-ef33-4336-b06a-d2f2916a4dbb" class=""><strong>Casing</strong>: 리소스 요청 시에 리소스의 복사본을 제공한다.</p><h3 id="dec6ec7e-4a02-45d0-a074-f57ff4cdc659" class="">HTTP Method</h3><p id="1ebdfcf7-62c1-48d1-81e9-f6eb54af3b30" class="">HTTP Request에서 Method는 클라이언트가 요청하는 목적을 나타낸다.</p><ol type="1" id="4e454967-d60b-46e6-a3a5-47f72da8b3fd" class="numbered-list" start="1"><li>POST: 새로운 리소스를 등록하는 것을 요청한다. (Create에 대응)</li></ol><ol type="1" id="e863d82e-793e-4ab1-b66b-29c5116fa1cd" class="numbered-list" start="2"><li>GET: 기존 리소스 정보를 읽는 것을 요청한다. (Read에 대응)</li></ol><ol type="1" id="6c06f6c9-102e-4cd4-9e11-9ec5ad6167fe" class="numbered-list" start="3"><li>PUT: 기존 리소스를 대체하는 것을 요청한다. (Update에 대응)</li></ol><ol type="1" id="3cbdb89d-b9bd-49f8-b82d-e38d8f98a9b3" class="numbered-list" start="4"><li>DELETE: 기존 리소스를 삭제하는 것을 요청한다. (Delete에 대응)</li></ol><h3 id="8fd95d5c-c4a8-41e4-9582-794294d1be26" class="">JSON: JavaScript Object Notation</h3><p id="07c3d3a3-931f-42c7-a2a7-14d48f6d8288" class="">텍스트 기반의 데이터 교환 표준이다.</p><p id="941120c0-170c-4ed4-8423-b376edafc09e" class="">속도가 빠르고, 작성하고 사용하기 쉽다.</p><p id="0b79509e-e2da-4f0e-ad31-e9f3033c33c3" class=""><strong>JSON Schema</strong>: 보낸 JSON 데이터가 유효한 것인지 확인할 수 있는 형식이다.</p><h3 id="ef1cd75c-873f-4ade-bc9b-aad7ebeffa49" class="">Serialization</h3><p id="89e1bb6b-17f8-431e-9355-6025c4beaf1a" class="">모델의 객체를 HTTP로 전송할 수 있는 형식(JSON 등)으로 변환하는 것이다.</p><p id="7ceac0dc-8602-4e7a-a6c7-1e00ea8cac51" class="">반대 과정을 Deserialization이라고 한다.</p><h3 id="8696cd19-bec2-4406-bf4e-0dfa0fc50508" class="">Serializer</h3><p id="d8158a70-14fa-4c1f-a92e-1de7c53df03b" class="">Model의 instance와 Python built-in data type 간 변환을 담당한다.</p><p id="d1141bdc-05b3-4a8b-a33e-f6aba73e7eef" class="">데이터 유효성을 검증하는 <code>is_valid</code>, DB에 저장하는 <code>save</code>등이 있다.</p><p id="7375b0d3-47b5-4873-a104-3796595634dc" class="">위 기능을 제공하도록 직접 Serializer 클래스 정의하거나 ModelSerializer를 상속받는다.</p><h3 id="38ebf960-503f-4b1e-ab80-28253f8e314e" class="">Parser</h3><p id="897a0db5-747e-4646-b865-875148958b55" class="">HTTP Request에서 Python built-in data type으로 변환을 담당한다.</p><p id="4b5de567-2bfc-4ba3-857c-e9f6ef5ccc92" class=""> 메서드<code>parse(</code><em><code>stream</code></em><code>)</code> 를 이용한다.</p><h3 id="7e26af8f-0089-42bd-adef-23964c4bcd6f" class="">Render</h3><p id="637062d1-b6c6-4457-bd3d-054824c8542c" class="">Python built-in data type에서 HTTP Response로 변환을 담당한다.</p><p id="49faeaa6-c82d-4db5-b642-f83667193ad0" class="">메서드<code>render(</code><em><code>serializer</code></em><code>.data)</code>  를 이용한다.</p><h1 id="f76456d7-bfc5-4d43-86e9-36842ebc2356" class="">진행 상황</h1><h3 id="0867fe95-f618-4ce2-8bf4-bafd1f52e8a3" class="">구현</h3><figure id="e7b3e2ef-0044-419a-8461-5d549401bcbd"><a href="https://github.com/dsaint31x/dentis_db/tree/seminar" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title"></div></div><div class="bookmark-href">https://github.com/dsaint31x/dentis_db/tree/seminar</div></div></a></figure><h3 id="7bdc7efd-174c-44b5-aba3-56032c6c05aa" class="">serializers.py</h3><ul id="3b98ad9e-73ef-48b5-bc36-db50c8bea8d4" class="toggle"><li><details open=""><summary>코드</summary><pre id="24fbdd45-74be-4cf4-9854-eddddd6f8a65" class="code"><code>from rest_framework import serializers
+from dentis_db.models import Organization, Patient, Treatment
+
+
+class OrganizationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Organization
+        fields = (
+            &#x27;organization_id&#x27;,
+            &#x27;name&#x27;,
+            &#x27;Area_number&#x27;,
+        )
+
+
+class PatientSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Patient
+        fields = (
+            &#x27;patient_id&#x27;,
+            &#x27;patient_id_str&#x27;,
+            &#x27;sex&#x27;,
+            &#x27;organization_ID&#x27;,
+        )
+
+
+class TreatmentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Treatment
+        fields = (
+            &#x27;patient_id&#x27;,
+            &#x27;treatment_id&#x27;,
+            &#x27;treatment_id_str&#x27;,
+            &#x27;state&#x27;,
+            &#x27;tr_type&#x27;,
+
+            &#x27;angle_Class_L&#x27;,
+            &#x27;angle_Dis_L&#x27;,
+            &#x27;angle_Class_R&#x27;,
+            &#x27;angle_Dis_R&#x27;,
+
+            &#x27;extraction_U&#x27;,
+            &#x27;extraction_D&#x27;,
+
+            &#x27;surgery_U&#x27;,
+            &#x27;surgery_D&#x27;,
+
+            &#x27;face_Front&#x27;,
+            &#x27;face_Lateral&#x27;,
+            &#x27;face_Smile&#x27;,
+            &#x27;face_Midline&#x27;,
+            &#x27;intraOral_Front&#x27;,
+            &#x27;intraOral_Right&#x27;,
+            &#x27;intraOral_Left&#x27;,
+            &#x27;intraOral_Upper&#x27;,
+            &#x27;intraOral_Lower&#x27;,
+            &#x27;pano&#x27;,
+
+            &#x27;STL_Upper&#x27;,
+            &#x27;STL_Lower&#x27;,
+            &#x27;STL_Occlusal&#x27;,
+        )</code></pre></details></li></ul><p id="6efcffc7-e664-4b75-b0a8-8c27188a8d9e" class=""><code>ModelSerializer</code>을 상속 받아서 자동적으로 Fields와 Validators, create, update 등을 설정함</p><p id="5e3d2e59-a9c4-4194-8a3c-481720aea870" class="">기존 Dentis_db의 모델들에 대한 커스텀 Serializer 클래스를 만듦</p><h3 id="05914fef-44be-4cb4-bc35-99d6b32aef08" class="">views.py</h3><ul id="cccfdb50-798e-4518-9e62-b4a4e4498fa0" class="toggle"><li><details open=""><summary>코드</summary><pre id="90d9e8fa-aeed-4cf2-9cd6-e440ea67a91c" class="code"><code>from django.http import HttpRequest, HttpResponse, JsonResponse
+from typing import Any
+from rest_framework.renderers import JSONRenderer
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework import status
+from django.db.models import Model
+from dentis_db.models import Organization, Patient, Treatment
+from dentis_db.serializers import OrganizationSerializer, PatientSerializer, TreatmentSerializer
+from rest_framework.serializers import Serializer
+from rest_framework.parsers import JSONParser
+
+
+# Create your views here.
+def index(request):
+    return HttpResponse(&#x27;Hello, django &lt;br/&gt;\n Ready to develop!&#x27;)
+
+
+class JsonResopnse(HttpResponse):
+    def __init__(
+        self, content: object = ..., *args: Any, **kwargs: Any
+    ) -&gt; None:
+        content = JSONRenderer().render(content)
+        kwargs[&#x27;content_type&#x27;] = &#x27;application/json&#x27;
+        super().__init__(content, *args, **kwargs)
+
+
+def __get_all(
+    model_class: type[Model], serializer_class: type[Serializer]
+):
+    objs = model_class.objects.all()
+    serializer = serializer_class(objs, many=True)
+    return JsonResopnse(serializer.data)
+
+
+def __insert(request: HttpRequest, serializer_class: type[Serializer]):
+    parsed_data = JSONParser().parse(request)
+    serializer = serializer_class(data=parsed_data)
+    if serializer.is_valid():
+        serializer.save()
+        return JsonResopnse(
+            serializer.data, status=status.HTTP_201_CREATED
+        )
+    else:
+        return JsonResopnse(
+            serializer.errors, status=status.HTTP_400_BAD_REQUEST
+        )
+
+
+def __delete_all(model_class: type[Model]):
+    model_class.objects.all().delete()
+    return HttpResponse(status=status.HTTP_204_NO_CONTENT)
+
+
+def __db_overall(
+    request: HttpRequest,
+    model_class: type[Model],
+    serializer_class: type[Serializer]
+):
+    if request.method == &#x27;GET&#x27;:
+        return __get_all(model_class, serializer_class)
+    elif request.method == &#x27;POST&#x27;:
+        return __insert(request, serializer_class)
+    elif request.method == &#x27;DELETE&#x27;:
+        return __delete_all(model_class)
+    else:
+        return HttpResponse(status=status.HTTP_405_METHOD_NOT_ALLOWED)
+
+
+def __db_detail(
+    request: HttpRequest,
+    pk: Any,
+    model_class: type[Model],
+    serializer_class: type[Serializer]
+):
+    try:
+        obj = model_class.objects.get(pk=pk)
+    except model_class.DoesNotExist:
+        return HttpResponse(status=status.HTTP_404_NOT_FOUND)
+    if request.method == &#x27;GET&#x27;:
+        serializer = serializer_class(obj)
+        return JsonResopnse(serializer.data)
+    elif request.method == &#x27;PUT&#x27;:
+        data = JSONParser().parse(request)
+        serializer = serializer_class(obj, data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResopnse(serializer.data)
+        else:
+            return JsonResponse(
+                serializer.errors, status=status.HTTP_400_BAD_REQUEST
+            )
+    elif request.method == &#x27;DELETE&#x27;:
+        obj.delete()
+        return HttpResponse(status=status.HTTP_204_NO_CONTENT)
+    else:
+        return HttpResponse(status=status.HTTP_405_METHOD_NOT_ALLOWED)
+
+
+@csrf_exempt
+def organization_overall(request: HttpRequest):
+    return __db_overall(request, Organization, OrganizationSerializer)
+
+
+@csrf_exempt
+def organization_detail(request: HttpRequest, pk: int):
+    return __db_detail(request, pk, Organization, OrganizationSerializer)
+
+
+@csrf_exempt
+def patient_overall(request: HttpRequest):
+    return __db_overall(request, Patient, PatientSerializer)
+
+
+@csrf_exempt
+def patient_detail(request: HttpRequest, pk: int):
+    return __db_detail(request, pk, Patient, PatientSerializer)
+
+
+@csrf_exempt
+def treatment_overall(request: HttpRequest):
+    return __db_overall(request, Treatment, TreatmentSerializer)
+
+
+@csrf_exempt
+def treatment_detail(request: HttpRequest, pk: int):
+    return __db_detail(request, pk, Treatment, TreatmentSerializer)</code></pre></details></li></ul><p id="41df5987-a110-43b8-8f41-4c85b776239a" class="">기초적인 CRUD를 수행하는 함수 <code>__db_overall</code>과 <code>__db_detail</code>을 구현</p><p id="dfd46180-0a75-43e8-9358-a55496a793ca" class="">각각의 모델이 같은 CRUD를 수행할 수 있도록 매개변수로 해당 클래스를 받아 다형성 구현</p><p id="148db953-3a24-4a70-89a2-77f1388951ae" class="">클래스 <code>JsonResponse</code>를 직접 정의하여 <code>HttpResponse</code>에 JSON을 첨부하여 반환함</p><p id="ae4fabcb-63a6-40ec-8eb7-d6bb21dc55e5" class=""><code>__db_overall(request, model_class, serializer_class)</code><div class="indented"><p id="7f8d60b3-7bc0-43dc-afd1-85fc93150423" class=""><code>GET</code>: 해당 모델의 모든 항목을 전달하여 보냄</p><p id="7b73e01e-bb75-4a3c-b5c4-b84f250eb7f0" class=""><code>POST</code>: 해당 모델에 새로운 항목을 추가한뒤 전달하여 보냄, 값이 올바르지 않으면 <code>Bad Request</code></p><p id="af838f17-665c-465d-ac94-6e91a721d5dc" class=""><code>DELETE</code>: 해당 모델의 모든 항목을 삭제한뒤 <code>No Content</code>를 보냄</p><p id="40cb41c5-6651-4aca-9e46-815417d31ffa" class="">이외 다른 메소드는 <code>Method Not Allowed</code>를 보냄</p></div></p><p id="e9f8bc94-b670-410f-bd13-4f68e0aa2290" class=""><code>__db_detail(request, pk, model_class, serializer_class)</code><div class="indented"><p id="968e51f2-384c-4e07-8982-c966faac4be2" class=""><code>GET</code>: 해당 모델의 pk와 일치하는 항목을 전달하여 보냄, 없으면 Not Found</p><p id="a5299c68-a763-4f22-9490-1e4473ef9502" class=""><code>PUT</code>: 해당 모델의 pk와 같은 항목을 대체한 뒤 전달함, 값이 올바르지 않으면 <code>Bad Request</code></p><p id="29204802-ccf4-40c0-889d-cc86ac6812e5" class=""><code>DELETE</code>: 해당 모델의 pk와 같은 항목을 삭제한 뒤 <code>No Content</code>를 보냄</p><p id="53649c47-7b76-4f00-82f2-c128ca51022a" class="">이외 다른 메소드는 <code>Method Not Allowed</code>를 보냄</p></div></p><h3 id="f6890408-3b92-48b9-92b4-73818d955356" class="">urls.py</h3><ul id="7f757012-d44f-44ad-bd0d-07a2f215fd80" class="toggle"><li><details open=""><summary>코드</summary><pre id="da397cc1-8294-4061-823d-5fb64c1d487e" class="code"><code>from django.contrib import admin
+from django.urls import path,include
+from dentis_db import views
+
+app_name = &#x27;dentis_db&#x27;
+
+urlpatterns = [
+    path(&#x27;&#x27;, views.index, name=&#x27;index&#x27;),
+    path(&#x27;organization&#x27;, views.organization_overall),
+    path(&#x27;organization/&lt;int:pk&gt;&#x27;, views.organization_detail),
+    path(&#x27;patient&#x27;, views.patient_overall),
+    path(&#x27;patient/&lt;int:pk&gt;&#x27;, views.patient_detail),
+    path(&#x27;treatment&#x27;, views.treatment_overall),
+    path(&#x27;treatment/&lt;int:pk&gt;&#x27;, views.treatment_detail),
+]</code></pre></details></li></ul><p id="2b776dcc-c1da-4a12-a7f4-51b82d7f4310" class="">모델에 대한 접근을 URL 형식으로 제공함</p><p id="09d8f364-d325-4fe5-bbbd-7de2443cdee5" class="">예를 들어 모델 Organization을 <code>__db_overall</code> 방식으로 접근하려면 다음 URL을 사용해야 함</p><p id="5e05a33c-c58e-4eb6-b93c-0066015258d9" class=""><code>“http://서버도메인주소/organization”</code></p><p id="93922fb2-c204-4e08-802a-4c9ca9c0d26b" class="">모델 Organization 중 pk가 2인 것을 <code>__db_detail</code> 방식으로 접근하려면 다음 URL을 사용해야 함</p><p id="783b195c-fc1a-4aa9-9c7e-9097f4b1222b" class=""><code>“http://서버도메인주소/organization/2”</code></p><h3 id="b8582d46-71d3-40c2-a1ae-006f8b32b3eb" class="">테스트 결과</h3><ul id="628e1ba1-fa83-4494-b4b4-70fc54c6a695" class="toggle"><li><details open=""><summary>POST (Create)</summary><pre id="f0fa2965-8bc1-4227-8800-ac43b5207211" class="code"><code>POST http://localhost:8000/organization HTTP/1.1
+
+{
+    &quot;name&quot;: &quot;gachon&quot;,
+    &quot;Area_number&quot;: &quot;032&quot;
+}</code></pre><pre id="0b21f39a-7e9f-47f3-b8da-c40a3d824cf5" class="code"><code>HTTP/1.1 201 Created
+Date: Sun, 26 Jun 2022 15:25:09 GMT
+Server: WSGIServer/0.2 CPython/3.9.7
+Content-Type: application/json
+X-Frame-Options: DENY
+Content-Length: 57
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+
+{
+  &quot;organization_id&quot;: 6,
+  &quot;name&quot;: &quot;gachon&quot;,
+  &quot;Area_number&quot;: &quot;032&quot;
+}</code></pre></details></li></ul><ul id="5b712ee0-d92f-4e22-8840-92a7dca90d4a" class="toggle"><li><details open=""><summary>GET (Read)</summary><pre id="c01a583c-663f-4a0d-b8ce-33db06b3ef55" class="code"><code>GET http://localhost:8000/organization</code></pre><pre id="d7d02cee-cf39-47b3-a54d-72194989361b" class="code"><code>HTTP/1.1 200 OK
+Date: Sun, 26 Jun 2022 15:25:44 GMT
+Server: WSGIServer/0.2 CPython/3.9.7
+Content-Type: application/json
+X-Frame-Options: DENY
+Content-Length: 175
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+
+[
+  {
+    &quot;organization_id&quot;: 6,
+    &quot;name&quot;: &quot;gachon&quot;,
+    &quot;Area_number&quot;: &quot;032&quot;
+  },
+  {
+    &quot;organization_id&quot;: 8,
+    &quot;name&quot;: &quot;lachon&quot;,
+    &quot;Area_number&quot;: &quot;044&quot;
+  },
+  {
+    &quot;organization_id&quot;: 7,
+    &quot;name&quot;: &quot;nachon&quot;,
+    &quot;Area_number&quot;: &quot;002&quot;
+  }
+]</code></pre></details></li></ul><ul id="329dc80e-100d-4727-a34a-c5defbf8afc3" class="toggle"><li><details open=""><summary>PUT (Update)</summary><pre id="8b826120-dcaa-46be-8a77-f725a3200825" class="code"><code>PUT http://localhost:8000/organization/6
+
+{
+    &quot;organization_id&quot;: 6,
+    &quot;name&quot;: &quot;GachonUniv&quot;,
+    &quot;Area_number&quot;: &quot;002&quot;
+}</code></pre><pre id="1ce2361d-8954-408a-84c8-25d9123a41a7" class="code"><code>HTTP/1.1 200 OK
+Date: Sun, 26 Jun 2022 15:27:26 GMT
+Server: WSGIServer/0.2 CPython/3.9.7
+Content-Type: application/json
+X-Frame-Options: DENY
+Content-Length: 61
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+
+{
+  &quot;organization_id&quot;: 6,
+  &quot;name&quot;: &quot;GachonUniv&quot;,
+  &quot;Area_number&quot;: &quot;002&quot;
+}</code></pre><pre id="f1ac5704-e0a5-4639-bf1d-62196a663953" class="code"><code>HTTP/1.1 200 OK
+Date: Sun, 26 Jun 2022 15:28:24 GMT
+Server: WSGIServer/0.2 CPython/3.9.7
+Content-Type: application/json
+X-Frame-Options: DENY
+Content-Length: 179
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+
+[
+  {
+    &quot;organization_id&quot;: 6,
+    &quot;name&quot;: &quot;GachonUniv&quot;,
+    &quot;Area_number&quot;: &quot;002&quot;
+  },
+  {
+    &quot;organization_id&quot;: 8,
+    &quot;name&quot;: &quot;lachon&quot;,
+    &quot;Area_number&quot;: &quot;044&quot;
+  },
+  {
+    &quot;organization_id&quot;: 7,
+    &quot;name&quot;: &quot;nachon&quot;,
+    &quot;Area_number&quot;: &quot;002&quot;
+  }
+]</code></pre></details></li></ul><ul id="7c290060-81d5-4f68-933f-823f2383368f" class="toggle"><li><details open=""><summary>DELETE (Delete)</summary><pre id="70fccff4-b41c-465a-85e1-1a87fd385623" class="code"><code>DELETE http://localhost:8000/organization/6</code></pre><pre id="5bfb0544-3b38-4038-931f-e2e6b217bde4" class="code"><code>HTTP/1.1 204 No Content
+Date: Sun, 26 Jun 2022 15:28:49 GMT
+Server: WSGIServer/0.2 CPython/3.9.7
+Content-Type: text/html; charset=utf-8
+X-Frame-Options: DENY
+Content-Length: 0
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin</code></pre><pre id="7044875a-30e2-47bc-a160-142fc69c76e2" class="code"><code>HTTP/1.1 200 OK
+Date: Sun, 26 Jun 2022 15:29:11 GMT
+Server: WSGIServer/0.2 CPython/3.9.7
+Content-Type: application/json
+X-Frame-Options: DENY
+Content-Length: 117
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+
+[
+  {
+    &quot;organization_id&quot;: 8,
+    &quot;name&quot;: &quot;lachon&quot;,
+    &quot;Area_number&quot;: &quot;044&quot;
+  },
+  {
+    &quot;organization_id&quot;: 7,
+    &quot;name&quot;: &quot;nachon&quot;,
+    &quot;Area_number&quot;: &quot;002&quot;
+  }
+]</code></pre></details></li></ul><p id="e5b99984-b4e5-4023-8149-e59f5e93e044" class="">사용 환경</p><ul id="0ada2a50-83b6-4d7d-943b-074765215c4b" class="bulleted-list"><li style="list-style-type:disc">운영체제: WSL의 Ubuntu Linux 20.04.4</li></ul><ul id="cc289fb5-d779-4102-9486-755ca6b7f980" class="bulleted-list"><li style="list-style-type:disc">에디터: Visual Studio Code</li></ul><ul id="2c4cd5c6-66eb-4fcd-b819-eab41ab486bf" class="bulleted-list"><li style="list-style-type:disc">언어: Python 3.9.7</li></ul><ul id="172d4a6a-3956-4be5-8656-2126ca044526" class="bulleted-list"><li style="list-style-type:disc">웹 프레임워크: Django 3.2.12와 Django REST framework 3.13.1</li></ul><ul id="2d4e1145-e23b-4629-9030-66d747180423" class="bulleted-list"><li style="list-style-type:disc">데이터베이스: SQLite</li></ul><h1 id="ccc1feb6-ac37-4f1d-8981-eaab63c7eb34" class="">결론</h1><h3 id="310548a4-13a3-48ba-85b9-65644654a389" class="">정리된 사항</h3><ol type="1" id="49c4d174-8026-427f-aa91-b240c31aaa95" class="numbered-list" start="1"><li>RESTful API를 비롯한 필수적인 개념에 대해 이해했습니다.<p id="85b2f67b-a0c7-4421-a312-a1dc733d8691" class="">REST 아키텍처의 원칙 및 이점, HTTP 프로토콜, JSON 등 이해했습니다.</p></li></ol><ol type="1" id="12defaf9-c79a-4927-925c-37287899d69b" class="numbered-list" start="2"><li>Django와 Django Rest Framework의 전체적인 작업 흐름을 익혔습니다.<p id="99284e19-2285-44d9-a127-6e4f0a1eecc5" class="">Django의 views, urls 등과 Serializer, Parser, Renderer 등 사용하는 방법을 익혔습니다.</p></li></ol><ol type="1" id="99c358cc-800d-4df9-8aa1-b47b9fdba2ab" class="numbered-list" start="3"><li>교재에 나오는 대로 dentis_db에 대해 기초적인 CRUD 기능을 구현했습니다.<p id="551742fc-1ea6-431f-8a57-1ad04519545a" class="">주어진 모델을 고치지 않으면서 RESTful API를 구현했습니다.</p></li></ol><h3 id="f43bf424-4c31-42c3-a02f-52d487d151f7" class="">미해결된 사항</h3><ol type="1" id="631b1ebe-c98d-45df-911f-51134207725d" class="numbered-list" start="1"><li>이미지 파일 POST하는 방법을 찾아야 합니다.<p id="dd2eca00-a0c3-4944-a0f6-d886edc2307d" class="">모델 STL3D는 이미지 파일을 읽는데 JSON에 이미지 파일을 첨부하는 방법을 찾지 못했습니다.</p></li></ol><ol type="1" id="84d8614c-da08-4e4b-910d-8f83dd55f171" class="numbered-list" start="2"><li>DELETE 기능에 대한 제한이 필요합니다.<p id="406a0c22-5acf-4907-8366-68c2c1739b59" class="">지금 제공하는 기능 중 일부는 데이터 전체를 삭제하는 등 클라이언트에 제공하기는 위험합니다.</p><p id="205006a7-5094-4652-aa0d-3745884df401" class="">따라서 요구사항에 맞게 기능을 축소하거나 사용자 인증 과정이 필요합니다.</p></li></ol><ol type="1" id="6a238fc8-6f34-4e6d-80a3-79e5353e0e94" class="numbered-list" start="3"><li>다른 HTTP method도 구현해야 합니다.<p id="03c19ab8-ae5d-4036-9568-646af481ab58" class="">Patch 방식은 Get과 다르게 데이터의 일부 필드 값만 전달해도 수정이 되게 요청하는 것입니다.</p><p id="82881d39-fe50-4ab6-b933-982c21670b2b" class="">따라서 기본적인 기능 외 다양한 Method에 대한 기능 구현 및 핸들이 필요합니다.</p></li></ol><h1 id="64893ecc-7ab5-4355-8fee-cd0af8eb9393" class="">참고문헌</h1><figure id="44c635f2-4b61-40e5-9b34-8345d699d42b"><a href="https://www.packtpub.com/product/building-restful-python-web-services/9781786462251" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Building RESTful Python Web Services | Packt</div><div class="bookmark-description">In the preceding table, the GET HTTP verb appears twice but with two different scopes. The first row shows a GET HTTP verb applied to a collection of games (collection of resources) and the second row shows a GET HTTP verb applied to a game (a single resource).</div></div><div class="bookmark-href"><img src="https://d2aov160eccqlv.cloudfront.net/271739eb287c43adb004792095a0b2fc/images/7e26cb80ef4e68f870f1e40b5ef46584.ico" class="icon bookmark-icon"/>https://www.packtpub.com/product/building-restful-python-web-services/9781786462251</div></div><img src="https://static.packt-cdn.com/products/9781786462251/cover/smaller" class="bookmark-image"/></a></figure><figure id="5cbb166e-8678-4770-8f57-36a2a0c9801f"><a href="https://aws.amazon.com/ko/what-is/restful-api/?nc1=h_ls" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">RESTful API란 무엇인가? - RESTful API 초보자 가이드 - AWS</div><div class="bookmark-description">RESTful API는 두 컴퓨터 시스템이 인터넷을 통해 정보를 안전하게 교환하기 위해 사용하는 인터페이스입니다. 대부분의 비즈니스 애플리케이션은 다양한 태스크를 수행하기 위해 다른 내부 애플리케이션 및 서드 파티 애플리케이션과 통신해야 합니다. 예를 들어 월간 급여 명세서를 생성하려면 인보이스 발행을 자동화하고 내부의 근무 시간 기록 애플리케이션과 통신하기 위해 내부 계정 시스템이 데이터를 고객의 뱅킹 시스템과 공유해야 합니다.</div></div><div class="bookmark-href"><img src="https://a0.awsstatic.com/libra-css/images/site/fav/favicon.ico" class="icon bookmark-icon"/>https://aws.amazon.com/ko/what-is/restful-api/?nc1=h_ls</div></div><img src="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" class="bookmark-image"/></a></figure><figure id="fc816d3b-c8b0-4392-a041-fbd685bc1325"><a href="https://developer.mozilla.org/ko/docs/Web/HTTP" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">HTTP | MDN</div><div class="bookmark-description">하이퍼텍스트 전송 프로토콜(HTTP)은 HTML과 같은 하이퍼미디어 문서를 전송하기위한 애플리케이션 레이어 프로토콜입니다. 웹 브라우저와 웹 서버간의 커뮤니케이션을위해 디자인되었지만, 다른 목적으로도 사용될 수 있습니다. HTTP는 클라이언트가 요청을 생성하기 위한 연결을 연다음 응답을 받을때 까지 대기하는 전통적인 클라이언트-서버 모델을 따릅니다. HTTP는 무상태 프로토콜이며, 이는 서버가 두 요청간에 어떠한 데이터(상태)도 유지하지 않음을 의미합니다.</div></div><div class="bookmark-href"><img src="https://developer.mozilla.org/favicon-48x48.cbbd161b.png" class="icon bookmark-icon"/>https://developer.mozilla.org/ko/docs/Web/HTTP</div></div><img src="https://developer.mozilla.org/mdn-social-share.cd6c4a5a.png" class="bookmark-image"/></a></figure><figure id="60868a1b-5680-4608-87aa-88f0535ab985"><a href="http://www.tcpschool.com/json/intro" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">코딩교육 티씨피스쿨</div><div class="bookmark-description">4차산업혁명, 코딩교육, 소프트웨어교육, 코딩기초, SW코딩, 기초코딩부터 자바 파이썬 등</div></div><div class="bookmark-href"><img src="http://www.tcpschool.com/favicon-16x16.png" class="icon bookmark-icon"/>http://www.tcpschool.com/json/intro</div></div><img src="http://tcpschool.com/img/tcpschool_og_logo.png" class="bookmark-image"/></a></figure><p id="86fac29d-8c0c-4cc8-9347-d251491d6f6c" class="">
+</p></div></article></body></html>
