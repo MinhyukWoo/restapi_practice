@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from games.models import Game, GameCategory, Player, PlayerScore
 
-
 # class GameSerializer(serializers.Serializer):
 #     pk = serializers.IntegerField(read_only=True)
 #     name = serializers.CharField(max_length=200)
@@ -25,7 +24,7 @@ from games.models import Game, GameCategory, Player, PlayerScore
 
 class GameSerializer(serializers.HyperlinkedModelSerializer):
     game_category = serializers.SlugRelatedField(
-        slug_field='name',
+        slug_field="name",
         queryset=GameCategory.objects.all()
     )
 
@@ -42,7 +41,7 @@ class GameSerializer(serializers.HyperlinkedModelSerializer):
 
 class GameCategorySerializer(serializers.HyperlinkedModelSerializer):
     games = serializers.HyperlinkedRelatedField(
-        view_name='game-detail',
+        view_name='gamecategory-detail',
         many=True,
         read_only=True,
     )

@@ -55,7 +55,7 @@ class PlayerScoreDetail(generics.RetrieveUpdateDestroyAPIView):
     name = 'playerscore-detail'
 
 
-class ApiRoot(generics.GenericAPIView):
+class ApiRoot(generics.ListAPIView):
     name = 'api-root'
 
     def get(self, request, *args, **kwargs):
