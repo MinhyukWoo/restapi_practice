@@ -3,6 +3,7 @@ from django.urls import reverse
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework import permissions
+from rest_framework.throttling import ScopedRateThrottle
 
 from games.models import Game, GameCategory, Player, PlayerScore
 from games.permissions import IsOwnerOrReadOnly
@@ -14,12 +15,16 @@ class GameCategoryList(generics.ListCreateAPIView):
     queryset = GameCategory.objects.all()
     serializer_class = GameCategorySerializer
     name = "gamecategory-list"
+    throttle_classes = (ScopedRateThrottle,)
+    throttle_scope = "game-categories"
 
 
 class GameCategoryDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = GameCategory.objects.all()
     serializer_class = GameCategorySerializer
     name = "gamecategory-detail"
+    throttle_classes = (ScopedRateThrottle,)
+    throttle_scope = "game-categories"
 
 
 class GameList(generics.ListCreateAPIView):
