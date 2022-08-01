@@ -41,6 +41,10 @@ INSTALLED_APPS = [
     "rest_framework",
     # Games application: 게임 앱
     "games.apps.GamesConfig",
+    # Django filters
+    "django_filters",
+    # Crispy forms
+    "crispy_forms",
 ]
 
 MIDDLEWARE = [
@@ -144,4 +148,9 @@ REST_FRAMEWORK = {
         "user": "20/hour",
         "game-categories": "30/hour",
     },
+    "DEFAULT_FILTER_BACKENDS": (
+        "django_filters.rest_framework.DjangoFilterBackend",
+        "rest_framework.filters.SearchFilter",
+        "rest_framework.filters.OrderingFilter",
+    ),
 }
